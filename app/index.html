@@ -20,13 +20,13 @@
     <!-- endbuild -->
 
   </head>
-  <body>
+  <body ng-app="app">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
-    <div class="container">
+    <div class="container" ng-controller="coffeeController">
       <div class="header">
         <h3 class="text-muted">Dispensador De Cafe</h3>
       </div>
@@ -35,7 +35,7 @@
         <div class="row">
           <div class="col-md-12">
            	<div class="header-display">
-           		<div class="display">Display</div><br>
+           		<div class="display">{{display}}</div><br>
            	</div>
           </div>
         </div>
@@ -51,21 +51,21 @@
                     <div class="row">
                       <div class="col-md-4 option">
                       	<h5><b>Cafe</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Cafe')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn1.png" alt="">
                       	</div>
                       	<h5>1200$</h5>
                       </div>
                       <div class="col-md-4 option">
                       	<h5><b>Cappucino</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Cappucino')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn2.png" alt="">
                       	</div>
                       	<h5>2500$</h5>
                       </div>
                       <div class="col-md-4 option">
                       	<h5><b>Moka</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Moka')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn3.png" alt="">
                       	</div>
                       	<h5>2000$</h5>
@@ -74,21 +74,21 @@
                     <div class="row">
                       <div class="col-md-4 option">
                       	<h5><b>Cafe+Leche</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Cafe+Leche')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn4.png" alt="">
                       	</div>
                       	<h5>1800$</h5>
                       </div>
                       <div class="col-md-4 option">
                       	<h5><b>Expresso</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Expresso')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn5.png" alt="">
                       	</div>
                       	<h5>2100$</h5>
                       </div>
                       <div class="col-md-4 option">
                       	<h5><b>Americano</b></h5>
-                      	<div class="btn">
+                      	<div class="btn" ng-click="selectOption('Americano')" ng-disabled="disableOption">
                       		<img src="images/coffee_btn6.png" alt="">
                       	</div>
                       	<h5>2400$</h5>
@@ -100,24 +100,31 @@
                   <div class="row">
                   	<div class="monedas">
                   		<h5 class="title"><b>Monedas</b></h5>
-                  		<button class="btn circle">100$</button>
-                  		<button class="btn circle">200$</button>
-                  		<button class="btn circle">500$</button>
+                  		<button class="btn circle" ng-click="selectMoney(100)" ng-disabled="disableMoney">100$</button>
+                  		<button class="btn circle" ng-click="selectMoney(200)" ng-disabled="disableMoney">200$</button>
+                  		<button class="btn circle" ng-click="selectMoney(500)" ng-disabled="disableMoney">500$</button>
                   	</div>
                   </div>
                   <div class="row">
                   	<div class="billetes">
                   		<h5 class="title"><b>Billetes</b></h5>
-                  		<button class="btn">1000 $</button><br>
-                  		<button class="btn">2000 $</button><br>
-                  		<button class="btn">5000 $</button>
+                  		<button class="btn" ng-click="selectMoney(1000)" ng-disabled="disableMoney">1000 $</button><br>
+                  		<button class="btn" ng-click="selectMoney(2000)" ng-disabled="disableMoney">2000 $</button><br>
+                  		<button class="btn" ng-click="selectMoney(5000)" ng-disabled="disableMoney">5000 $</button>
                   	</div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-8">
-                	<div>Devuelta</div>
+                	<div class="devuelta">
+                   <h4 style="color:white;">{{devuelta}} &crarr;</h4> 
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="btn btn-danger" style="widht:100%;height:25px;" ng-click="cancel()">
+                  Cancelar &not;
+                  </div>
                 </div>
               </div>
             </div>
@@ -134,6 +141,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -164,6 +172,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
+        <script src="scripts/angular.js"></script>
         <!-- endbuild -->
 </body>
 </html>
